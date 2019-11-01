@@ -7,7 +7,7 @@
         row-key="id"
       >
        <template v-slot:top>
-         <q-btn label="Tambah" color="primary" @click="addSiswa" />
+         <q-btn label="Tambah Baru" color="primary" @click="showDialog = !showDialog"/>
       </template> 
         <template v-slot:body-cell-actions="props">
           <q-td :props="props">
@@ -79,7 +79,7 @@ export default {
         { name: 'alamat', label: 'Alamat', field: 'alamat', sortable: true }
       ],
       siswa: [
-        { id: uid(), name: 'Teguh', nis: 123, alamat: 'disini'},
+        {id: uid(), name: 'Teguh', nis: 123, alamat: 'disini'},
         {id: uid(), name: 'Sumade', nis: 234, alamat: 'sukamanah'},
         {id: uid(), name: 'Parwito', nis: 789, alamat: 'jogja'
         }
@@ -96,22 +96,20 @@ export default {
        nisSelector.validate()
        alamatSelector.validate()
 
-        if (namaSelector.hasError || nisSelector.hasError || emailSelector.hasError || jurusanSelector.hasError || alamatSelector.hasError) console.log("Gagal simpan data siswa")
-      else {
+        this.showDialog = false
         this.addSiswa()
         this.clearForm()
-      }
-    },
+      },
       clearForm() {
         this.form.name = ''
         this.form.nis = ''
         this.form.alamat = ''
-        this.showDialog = false
+       
+      
       },
 
       // showForm(id='') {
       // this.showDialog = true
-      // },
 
       addSiswa() {
         this.siswa.push({
