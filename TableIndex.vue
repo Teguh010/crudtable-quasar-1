@@ -120,7 +120,6 @@ export default {
           nis: this.form.nis,
           alamat: this.form.alamat,
         })
-        if (id == '') id = uid()
       },
 
 
